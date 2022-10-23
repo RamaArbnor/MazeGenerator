@@ -9,7 +9,7 @@ let current ;
 
 function setup() {
   // put setup code here
-  createCanvas(4000, 4000);
+  createCanvas(800, 800);
   // frameRate(5)
   cols = floor(width / s);
   rows = floor(height / s);
