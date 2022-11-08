@@ -1,0 +1,29 @@
+{
+  "name": "mazegenerator-ramaarbnor",
+  "version": "1.0.0",
+  "description": "An attempt on creating a maze generator using p5js",
+  "main": "p5.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier -w ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Robert-Rendell/MazeGenerator-RamaArbnor.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Robert-Rendell/MazeGenerator-RamaArbnor/issues"
+  },
+  "homepage": "https://github.com/Robert-Rendell/MazeGenerator-RamaArbnor#readme",
+  "devDependencies": {
+    "@types/react": "^18.0.25",
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-p5-wrapper": "^3.4.0"
+  }
+}

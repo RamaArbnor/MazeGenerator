@@ -1,53 +1,68 @@
-// let s = 40; //size
-var cols, rows;
-var s = 40;
+type Props = {
+  screenWidth: number;
+  onReady: (() => void) | undefined;
+}
+
+const mazeSketch = (p5: any) => {
+    // let s = 40; //size
+    var cols, rows;
+    var s = 40;
 
 
-let blocks = [];
-let stack = [];
-let current ;
-
-function setup() {
-  // put setup code here
-  createCanvas(800, 800);
-  // frameRate(5)
-  cols = floor(width / s);
-  rows = floor(height / s);
-  background(51);
-  for(var j = 0; j < rows; j++){
-    for(var i = 0; i < cols; i++){
-      blocks.push(new Block(i,j));
+    let blocks = [];
+    let stack = [];
+    let current ;
+  
+  p5.setup = () => { 
+    // put setup code here
+    createCanvas(800, 800);
+    // frameRate(5)
+    cols = floor(width / s);
+    rows = floor(height / s);
+    background(51);
+    for(var j = 0; j < rows; j++){
+        for(var i = 0; i < cols; i++){
+        blocks.push(new Block(i,j));
+        }
     }
+
+    current = blocks[0];
   }
 
-  current = blocks[0];
+  p5.setup = () => {
+    // put drawing code here
+    for(var i = 0; i < blocks.length; i++){
+        blocks[i].draw();
+    }
+
+    current.visited = true;
+    current.visit()
+    console.log(current)
+    // blocks[1].visited = true;
+    // blocks[1].visit()
+    var next = current.checkNeighbours()
+    if(next){
+        next.visited = true;
+        stack.push(current);
+
+        removeWalls(current, next)
+
+        current = next;
+    } else if (stack.length > 0) {
+        current = stack.pop();
+    }
+  }
+}
+
+
+
+
+function setup() {
+
 
 }
 
 function draw() {
-  // put drawing code here
-  for(var i = 0; i < blocks.length; i++){
-    blocks[i].draw();
-  }
-
-  current.visited = true;
-  current.visit()
-  console.log(current)
-  // blocks[1].visited = true;
-  // blocks[1].visit()
-  var next = current.checkNeighbours()
-  if(next){
-    next.visited = true;
-    stack.push(current);
-
-    removeWalls(current, next)
-
-    current = next;
-  }else if (stack.length > 0) {
-    current = stack.pop();
-  }
-
-  
 
 }
 
